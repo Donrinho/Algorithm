@@ -16,6 +16,10 @@
 ## 两种算法的区别
 
 | 算法  | 判断                    | 匹配成功 | 匹配失败        |
-| :---  | :---:                   | :---     | :---            |
+| :---: | :---:                   | :---:    | :---:           |
 | Naive | text[i+j] == pattern[j] | i++  j++ | i++   j=0       |
 | KMP   | text[i+j] == pattern[j] | i++  j++ | i不变 j=next[j] |
+
+### 朴素算法
+
+![朴素算法](https://github.com/Donrinho/Algorithm/raw/master/String/picture/01.jpg)
