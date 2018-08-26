@@ -49,6 +49,6 @@
 
 ![pnext](https://github.com/Donrinho/Algorithm/raw/master/String/picture/03.jpg)  
 
-| :---: | :---:                   | :---:    | :---:           |
-| Naive | `text[i+j] == pattern[j]` | `i++  j++` | `i++`   `j=0`       |
-| KMP   | `text[i+j] == pattern[j]` | `i++  j++` | `i`不变 `j=next[j]` |
+`p[k] == p[j]` → `next[j+1] = next[j] + 1 = k + 1`  
+`p[k] != p[j]` → `p[h] == p[j]` ：`next[j+1] = next[k] + 1 = next[next[j]] + 1 = h + 1`  
+                `p[h] != p[j]` ：重复  
