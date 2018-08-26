@@ -30,7 +30,7 @@
 
 ## KMP算法的关键：求next[j]
 即查找`pattern[0:j]`的最大相等k前缀和k后缀（不包括自身）  
-例子：  
+**例子：**  
 假设模式串为：`'abcabde'`  
 当`j=0`时，`''`，定义`k=-1`  
 当`j=1`时，`'a'`，`k=0`  
@@ -49,3 +49,6 @@
 
 ![pnext](https://github.com/Donrinho/Algorithm/raw/master/String/picture/03.jpg)  
 
+| :---: | :---:                   | :---:    | :---:           |
+| Naive | `text[i+j] == pattern[j]` | `i++  j++` | `i++`   `j=0`       |
+| KMP   | `text[i+j] == pattern[j]` | `i++  j++` | `i`不变 `j=next[j]` |
