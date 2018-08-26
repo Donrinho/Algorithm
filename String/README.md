@@ -4,13 +4,13 @@
 - 模式串长度：m
 
 ## 1、朴素算法
-时间复杂度：O(mn)
-空间复杂度：O(1)
+时间复杂度：O(mn)  
+空间复杂度：O(1)  
 代码：[Naive_Matching.py](String/Naive_Matching.py)
 
 ## 2、KMP算法
-时间复杂度：O(m+n)
-空间复杂度：O(m)
+时间复杂度：O(m+n)  
+空间复杂度：O(m)  
 代码：[KMP_Matching.py](String/KMP_Matching.py)
 
 ## 两种算法的区别
