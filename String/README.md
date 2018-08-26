@@ -17,13 +17,13 @@
 
 | 算法  | 判断                    | 匹配成功 | 匹配失败        |
 | :---: | :---:                   | :---:    | :---:           |
-| Naive | text[i+j] == pattern[j] | i++  j++ | i++   j=0       |
-| KMP   | text[i+j] == pattern[j] | i++  j++ | i不变 j=next[j] |
+| Naive | `text[i+j] == pattern[j]` | `i++  j++` | `i++`   `j=0`       |
+| KMP   | `text[i+j] == pattern[j]` | `i++  j++` | `i`不变 `j=next[j]` |
 
 ### 朴素算法
 
-![朴素算法](https://github.com/Donrinho/Algorithm/raw/master/String/picture/01.jpg)
+![朴素算法](https://github.com/Donrinho/Algorithm/raw/master/String/picture/01.jpg)  
 ![KMP算法](https://github.com/Donrinho/Algorithm/raw/master/String/picture/02.jpg)
 
-## KMP算法的关键：求`next[j]`
-即查找pattern[0:j]的最大相等k前缀和k后缀（不包括自身）
+## KMP算法的关键：求next[j]
+即查找`pattern[0:j]`的最大相等k前缀和k后缀（不包括自身）
