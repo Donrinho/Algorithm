@@ -6,12 +6,12 @@
 ## 1、朴素算法
 时间复杂度：O(mn)  
 空间复杂度：O(1)  
-代码：[Naive_Matching.py](Code/Naive_Matching.py)
+代码：[Naive_Matching.py](code/Naive_Matching.py)
 
 ## 2、KMP算法
 时间复杂度：O(m+n)  
 空间复杂度：O(m)  
-代码：[KMP_Matching.py](Code/KMP_Matching.py)
+代码：[KMP_Matching.py](code/KMP_Matching.py)
 
 ## 两种算法的区别
 
