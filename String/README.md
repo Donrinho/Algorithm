@@ -52,3 +52,21 @@
 `p[k] == p[j]` **→** `next[j+1] = next[j] + 1 = k + 1`  
 `p[k] != p[j]` **→** `p[h] == p[j]` ：`next[j+1] = next[k] + 1 = next[next[j]] + 1 = h + 1`  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`p[h] != p[j]` ：重复  
+
+求nextj的函数如下：
+```python
+def gen_pnext(p):
+    i, k, m = 0, -1, len(p)
+    pnext = [-1] * m
+    while i < m - 1:
+        if k == -1 or p[i] == p[k]:
+            i, k = i + 1, k + 1
+            pnext[i] = k
+        else:
+            k = pnext[k]
+    return pnext
+```
+**注：**  
+- `j`表示索引，`k`表示`next[j]`，`m`表示长度
+- `while`循环从`pnext[1]`到`pnext[len(p)]`
+- 由于`next[1]`一定等于`0`，那么`next[0]`一定等于`-1`，所以`k=-1`既表示开头，也为了递归式的统一
