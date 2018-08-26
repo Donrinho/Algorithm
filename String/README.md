@@ -1,19 +1,19 @@
-#字符串匹配
+# 字符串匹配
 
 - 文本串长度：n
 - 模式串长度：m
 
-##1、朴素算法
+## 1、朴素算法
 时间复杂度：O(mn)
 空间复杂度：O(1)
-代码：[Naive_Matching.py](string/Naive_Matching.py)
+代码：[Naive_Matching.py](String/Naive_Matching.py)
 
-##2、KMP算法
+## 2、KMP算法
 时间复杂度：O(m+n)
 空间复杂度：O(m)
-代码：[KMP_Matching.py](string/KMP_Matching.py)
+代码：[KMP_Matching.py](String/KMP_Matching.py)
 
-##两种算法的区别
+## 两种算法的区别
 
 | 算法  | 判断                    | 匹配成功 | 匹配失败        |
 | :---  | :---:                   | :---     | :---            |
