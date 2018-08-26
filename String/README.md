@@ -23,3 +23,7 @@
 ### 朴素算法
 
 ![朴素算法](https://github.com/Donrinho/Algorithm/raw/master/String/picture/01.jpg)
+![KMP算法](https://github.com/Donrinho/Algorithm/raw/master/String/picture/02.jpg)
+
+## KMP算法的关键：求`next[j]`
+即查找pattern[0:j]的最大相等k前缀和k后缀（不包括自身）
