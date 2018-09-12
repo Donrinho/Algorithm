@@ -53,15 +53,15 @@
 `p[k] != p[j]` **→** `p[h] == p[j]` ：`next[j+1] = next[k] + 1 = next[next[j]] + 1 = h + 1`  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`p[h] != p[j]` ：重复  
 
-求nextj的函数如下：
+求next[j]的函数如下：
 ```python
 def gen_pnext(p):
-    i, k, m = 0, -1, len(p)
+    j, k, m = 0, -1, len(p)
     pnext = [-1] * m
-    while i < m - 1:
-        if k == -1 or p[i] == p[k]:
-            i, k = i + 1, k + 1
-            pnext[i] = k
+    while j < m - 1:
+        if k == -1 or p[j] == p[k]:
+            j, k = j + 1, k + 1
+            pnext[j] = k
         else:
             k = pnext[k]
     return pnext
@@ -72,3 +72,26 @@ def gen_pnext(p):
 - 由于`next[1]`一定等于`0`，那么`next[0]`一定等于`-1`，所以`k=-1`既表示开头，也为了递归式的统一
 
 ## KMP算法的改进
+考虑文本串与模式串匹配失败时，模式串会从匹配失败处`j`滑动到`k`处
+对应求next[j]的函数中第7行：`pnext[j] = k`
+由于p[j]与文本串匹配失败，所以如果满足`p[j] == p[k]`，应继续滑动到`pnext[k]`处，提高效率
+即：`pnext[j] == k` 并且 `p[j] == p[k]` ，`pnext[j]`可以直接等于`pnext[k]`
+
+改进后求next[j]的函数如下：
+```python
+def gen_pnext(p):
+    j, k, m = 0, -1, len(p)
+    pnext = [-1] * m
+    while j < m - 1:
+        if k == -1 or p[j] == p[k]:
+            j, k = j + 1, k + 1
+            if p[j] == p[k]:
+                pnext[j] = pnext[k]
+            else:
+                pnext[j] = k
+        else:
+            k = pnext[k]
+    return pnext
+```
+
+改进后代码：[KMP_Matching_new.py](code/KMP_Matching_new.py)

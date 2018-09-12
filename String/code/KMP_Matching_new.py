@@ -1,4 +1,4 @@
-def KMP_Matching(t, p):
+def KMP_Matching_new(t, p):
     m, n = len(p), len(t)
     i, j = 0, 0
     pnext = gen_pnext(p)
@@ -17,7 +17,10 @@ def gen_pnext(p):
     while j < m - 1:
         if k == -1 or p[j] == p[k]:
             j, k = j + 1, k + 1
-            pnext[j] = k
+            if p[j] == p[k]:
+                pnext[j] = pnext[k]
+            else:
+                pnext[j] = k
         else:
             k = pnext[k]
     return pnext
