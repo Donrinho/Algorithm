@@ -53,7 +53,7 @@
 `p[k] != p[j]` **→** `p[h] == p[j]` ：`next[j+1] = next[k] + 1 = next[next[j]] + 1 = h + 1`  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`p[h] != p[j]` ：重复  
 
-求next[j]的函数如下：
+求`next[j]`的函数如下：
 ```python
 def gen_pnext(p):
     j, k, m = 0, -1, len(p)
@@ -73,11 +73,11 @@ def gen_pnext(p):
 
 ## KMP算法的改进
 考虑文本串与模式串匹配失败时，模式串会从匹配失败处`j`滑动到`k`处  
-对应求next[j]的函数中第7行：`pnext[j] = k`  
-由于p[j]与文本串匹配失败，所以如果满足`p[j] == p[k]`，应继续滑动到`pnext[k]`处，提高效率  
+对应求`next[j]`的函数中第7行：`pnext[j] = k`  
+由于`p[j]`与文本串匹配失败，所以如果满足`p[j] == p[k]`，应继续滑动到`pnext[k]`处，提高效率  
 即：`pnext[j] == k` 并且 `p[j] == p[k]` ，`pnext[j]`可以直接等于`pnext[k]`  
 
-改进后求next[j]的函数如下：
+改进后求`next[j]`的函数如下：
 ```python
 def gen_pnext(p):
     j, k, m = 0, -1, len(p)
@@ -97,13 +97,16 @@ def gen_pnext(p):
 改进后代码：[KMP_Matching_new.py](code/KMP_Matching_new.py)
 
 ## KMP算法的应用
-[Power Strings:](http://poj.org/problem?id=2406)&nbsp;POJ2406  
+**POJ2406：**[Power Strings](http://poj.org/problem?id=2406)  
+
 若字符串S是由子串T循环n次得到，求最大的n  
+
 **例如：**  
 输入：  
 abcd  
 aaaa  
 ababab  
+
 输出：  
 1  
 4  
@@ -111,8 +114,7 @@ ababab
 
 原有的KMP算法中求得的`pnext`数组长度与模式串相同，但`pnext[0:n-1]`数组代表的是`p`的最大相等k前缀和k后缀（不包括自身），所以需要在末尾扩充一个元素使其包括自身，修改后的`pnext[0:n]`的最后一位代表整个字符串的最大相等k前缀和k后缀  
 
-求最大的循环次数的方法：  
-判断`len(p)`是否能被`len(p)-pnext[n]`整除  
+**求最大的循环次数的方法：**判断`len(p)`是否能被`len(p)-pnext[n]`整除  
 
 原理见下图：
 
