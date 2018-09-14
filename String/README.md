@@ -29,7 +29,7 @@
 ![KMP算法](https://github.com/Donrinho/Algorithm/raw/master/String/picture/02.jpg)
 
 ## KMP算法的关键：求next[j]
-即查找`pattern[0:j]`的最大相等k前缀和k后缀（不包括自身）  
+即查找`pattern[0:j]`的最大相等k前缀和k后缀（不包括自身）
 **例子：**  
 假设模式串为：`'abcabde'`  
 当`j=0`时，`''`，定义`k=-1`  
@@ -47,7 +47,7 @@
 
 规律：`pnext[1]`一定等于`0`  
 
-![pnext](https://github.com/Donrinho/Algorithm/raw/master/String/picture/03.jpg)  
+![pnext](https://github.com/Donrinho/Algorithm/raw/master/String/picture/03.jpg)
 
 `p[k] == p[j]` **→** `next[j+1] = next[j] + 1 = k + 1`  
 `p[k] != p[j]` **→** `p[h] == p[j]` ：`next[j+1] = next[k] + 1 = next[next[j]] + 1 = h + 1`  
@@ -95,3 +95,27 @@ def gen_pnext(p):
 ```
 
 改进后代码：[KMP_Matching_new.py](code/KMP_Matching_new.py)
+
+## KMP算法的应用
+[Power Strings:](http://poj.org/problem?id=2406)&nbsp;POJ2406
+若字符串S是由子串T循环n次得到，求最大的n
+**例如：**
+输入：
+abcd
+aaaa
+ababab
+输出：
+1
+4
+3
+
+原有的KMP算法中求得的`pnext`数组长度与模式串相同，但`pnext[0:n-1]`数组代表的是`p`的最大相等k前缀和k后缀（不包括自身），所以需要在末尾扩充一个元素使其包括自身，修改后的`pnext[0:n]`的最后一位代表整个字符串的最大相等k前缀和k后缀
+
+求最大的循环次数的方法：
+判断`len(p)`是否能被`len(p)-pnext[n]`整除
+
+原理见下图：
+
+![Power Strings](https://github.com/Donrinho/Algorithm/raw/master/String/picture/04.jpg)
+
+完整代码：[Power_Strings.py](code/Power_Strings.py)
